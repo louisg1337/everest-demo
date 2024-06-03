@@ -38,8 +38,8 @@ while getopts ':r:b:cj123h' option; do
     r)  DEMO_REPO="$OPTARG" ;;
     b)  DEMO_BRANCH="$OPTARG" ;;
     c)  CSMS="citrine"
-        CSMS_REPO="https://github.com/citrineos/citrineos-core" 
-        CSMS_BRANCH="63670f3adc09266a0977862d972b0f7e440c577f" ;;
+        CSMS_REPO="https://github.com/louisg1337/citrineos-core" 
+        CSMS_BRANCH="test" ;;
     j)  DEMO_VERSION="v1.6j"
         DEMO_COMPOSE_FILE_NAME="docker-compose.ocpp16j.yml" ;;
     1)  DEMO_VERSION="v2.0.1-sp1"
@@ -93,7 +93,7 @@ git clone --branch "${DEMO_BRANCH}" "${DEMO_REPO}" everest-demo
 
 if [[ "$DEMO_VERSION" != v1.6j ]]; then
   echo "Cloning ${CSMS} CSMS from ${CSMS_REPO} into ${DEMO_DIR}/${CSMS}-csms and starting it"
-  git clone ${CSMS_REPO} ${CSMS}-csms
+  git clone --branch "${CSMS_BRANCH}" "${CSMS_REPO}" ${CSMS}-csms
 
   pushd ${CSMS}-csms || exit 1
 
